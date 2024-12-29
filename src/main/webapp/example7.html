@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 7: Weather API</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Example 7: Weather API</h1>
+</header>
+
+<section>
+    <h2>Check Weather</h2>
+    <input type="text" id="city" placeholder="Enter city name">
+    <button onclick="fetchWeather()">Get Weather</button>
+    <div id="weatherData"></div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Dynamic Web Projects. All Rights Reserved.</p>
+</footer>
+
+<script>
+    function fetchWeather() {
+        const city = document.getElementById('city').value;
+        if (!city) {
+            alert('Please enter a city name!');
+            return;
+        }
+
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=YOUR_API_KEY&units=metric`)
+            .then(response => response.json())
+            .then(data => {
+                const weatherDiv = document.getElementById('weatherData');
+                weatherDiv.innerHTML = `
+                    <p><strong>City:</strong> ${data.name}</p>
+                    <p><strong>Temperature:</strong> ${data.main.temp} °C</p>
+                    <p><strong>Condition:</strong> ${data.weather[0].description}</p>
+                `;
+            })
+            .catch(error => console.error('Error fetching weather:', error));
+    }
+</script>
+
+</body>
+</html>

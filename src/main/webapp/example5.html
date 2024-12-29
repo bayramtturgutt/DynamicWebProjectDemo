@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 5: AJAX Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Example 5: Dynamic Content with AJAX</h1>
+</header>
+
+<section>
+    <h2>Load Random User</h2>
+    <button onclick="fetchUser()">Get User</button>
+    <div id="userData"></div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Dynamic Web Projects. All Rights Reserved.</p>
+</footer>
+
+<script>
+    function fetchUser() {
+        fetch('https://randomuser.me/api/')
+            .then(response => response.json())
+            .then(data => {
+                const user = data.results[0];
+                const userDiv = document.getElementById('userData');
+                userDiv.innerHTML = `
+                    <p><strong>Name:</strong> ${user.name.first} ${user.name.last}</p>
+                    <p><strong>Email:</strong> ${user.email}</p>
+                    <img src="${user.picture.medium}" alt="User Image">
+                `;
+            })
+            .catch(error => console.error('Error fetching user:', error));
+    }
+</script>
+
+</body>
+</html>

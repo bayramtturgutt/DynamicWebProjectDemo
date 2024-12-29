@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 2: Interactive To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Example 2: Interactive To-Do List</h1>
+</header>
+
+<section>
+    <h2>To-Do List</h2>
+    <input type="text" id="task" placeholder="Enter a new task">
+    <button onclick="addTask()">Add</button>
+    <ul id="taskList"></ul>
+</section>
+
+<footer>
+    <p>&copy; 2024 Dynamic Web Projects. All Rights Reserved.</p>
+</footer>
+
+<script>
+    function addTask() {
+        const taskInput = document.getElementById('task');
+        const taskList = document.getElementById('taskList');
+        if (taskInput.value.trim()) {
+            const li = document.createElement('li');
+            li.textContent = taskInput.value;
+            taskList.appendChild(li);
+            taskInput.value = "";
+        } else {
+            alert('Please enter a task.');
+        }
+    }
+</script>
+
+</body>
+</html>
