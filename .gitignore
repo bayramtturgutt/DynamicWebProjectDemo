@@ -1,0 +1,11 @@
+# MacOS sistem dosyaları
+.DS_Store
+
+# Eclipse proje dosyaları
+.classpath
+.project
+.settings/
+
+# Diğer istenmeyen dosyalar
+src/.DS_Store
+src/main/.DS_Store
